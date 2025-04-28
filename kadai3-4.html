@@ -31,13 +31,20 @@
 
             // 商品購入の関数
             function buyItem(no) {
-                console.log( "商品番号: " + no + ", 商品名: " + items[no-1].name + "を購入します");
-                items[no-1].stock -= 1;
-                if ( items[no-1].stock < 0){
-                    console.log("在庫がありません");
-                    items[no-1].stock = 0;
+                while (true){
+                    if ( no < 1 || items.length < no ){
+                        console.log("該当する商品がありません");
+                        break;
+                    }
+                    console.log( "商品番号: " + no + ", 商品名: " + items[no-1].name + "を購入します");
+                    items[no-1].stock -= 1;
+                    if ( items[no-1].stock < 0){
+                        console.log("在庫がありません");
+                        items[no-1].stock = 0;
+                    }
+                    showItemList(); // 商品一覧の表示関数呼び出し
+                    break;
                 }
-                showItemList(); // 商品一覧の表示関数呼び出し
             }
 
             showItemList(); // 商品一覧の表示関数呼び出し
